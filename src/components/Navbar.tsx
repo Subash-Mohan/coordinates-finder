@@ -6,7 +6,7 @@ const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<nav className="sticky right-0 left-0 top-0 py-4 bg-white backdrop-blur-lg z-[100]">
+		<nav className="fixed right-0 left-0 top-0 py-4 bg-white backdrop-blur-lg z-[100]">
 			<div className="flex flex-col ">
 				<div className="flex flex-row items-center justify-between px-6">
 					<aside className="flex items-center">

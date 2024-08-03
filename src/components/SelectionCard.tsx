@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const SelectionCard = () => {
 	return (
-		<div className="flex flex-col w-[80%] md:w-[60%] m-auto md:p-8 justify-center items-center">
+		<div className="flex flex-col w-[80%] md:w-[60%] m-auto md:p-8 justify-center items-center ">
 			<p className="md:text-2xl font-semibold bg-red-200 w-full text-center">
 				Choose a Blank Canvas or Upload a PDF to see your cursor's exact
 				coordinates as you move through the document.
