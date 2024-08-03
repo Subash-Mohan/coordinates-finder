@@ -1,4 +1,6 @@
 import { useState } from "react";
+import MenuIcon from "../icons/MenuIcon";
+import CancelIcon from "../icons/CancelIcon";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +17,7 @@ const Navbar = () => {
 						onClick={() => setIsOpen(!isOpen)}
 						type="button"
 					>
-						☰
+						{isOpen ? <CancelIcon /> : <MenuIcon />}
 					</button>
 					<ul className="hidden md:block">
 						<li className="inline-block text-black text-sm font-semibold px-4 py-2 hover:bg-[hsl(var(--primary))] hover:text-white rounded-lg">
