@@ -1,12 +1,14 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import SelectionCard from "./components/SelectionCard";
+import Home from "./pages/home";
 
 function App() {
 	return (
-		<div className="h-screen flex flex-col justify-around">
-			<Navbar />
-			<SelectionCard />
+		<div className="h-screen ">
+			{/*<Navbar />
+			<SelectionCard />*/}
+			<Home />
 		</div>
 	);
 }
