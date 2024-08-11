@@ -6,6 +6,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 *::-webkit-scrollbar {
@@ -21,8 +22,12 @@ body {
 
 @layer base {
 :root  {
-    --background: 210 100% 98%;
+    --background: 253 83% 95%;
     --primary: 241 100% 66%;
+    --blue: 201 93% 74%;
+    --purple: 252 78% 72%;
+    --yellow: 40 78% 80%;
+    --lightorange: 20 96% 89%;
   }
   
 }
