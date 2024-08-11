@@ -12,7 +12,11 @@ const Navbar = () => {
       ? "inline-block text-black text-sm font-bold px-7 py-2 bg-[hsl(var(--blue))] border-solid border-2 border-black shadow-[4px_4px_0px_0px_#000000] cursor-pointer"
       : "inline-block text-black text-sm font-bold px-7 py-2 hover:bg-[hsl(var(--blue))] hover:border-solid hover:border-2 hover:border-black hover:shadow-[4px_4px_0px_0px_#000000] cursor-pointer";
   };
-
+  const getMobNavItemClass = (route: string) => {
+    return pathname === route
+      ? "text-black text-sm font-bold py-2 border-solid border-2 bg-[hsl(var(--blue))] border-black shadow-[4px_4px_0px_0px_#000000]  w-full flex justify-center "
+      : "text-black text-sm font-bold py-2 hover:border-solid hover:border-2 hover:bg-[hsl(var(--blue))] hover:border-black hover:shadow-[4px_4px_0px_0px_#000000]  w-full flex justify-center ";
+  };
   const handleRedirect = (
     e: React.MouseEvent<HTMLLIElement> | React.KeyboardEvent
   ) => {
@@ -55,10 +59,15 @@ const Navbar = () => {
             isOpen ? "max-h-screen py-3" : "max-h-0"
           } transition-all duration-300 overflow-hidden flex-col  md:hidden items-center bg-white shadow-[4px_4px_0px_0px_#000000]`}
         >
-          <li className="text-black text-sm font-bold py-2 hover:border-solid hover:border-2 hover:bg-[hsl(var(--blue))] hover:border-black hover:shadow-[4px_4px_0px_0px_#000000]  w-full flex justify-center ">
+          <li
+            className={getMobNavItemClass("/")}
+            onClick={handleRedirect}
+            onKeyDown={handleRedirect}
+            data-route="/"
+          >
             Home
           </li>
-          <li className="text-black text-sm font-bold py-2 hover:border-solid hover:border-2 hover:bg-[hsl(var(--blue))] hover:border-black hover:shadow-[4px_4px_0px_0px_#000000]  w-full flex justify-center ">
+          <li className={getMobNavItemClass("/blog")} data-route="/blog">
             Blog
           </li>
         </ul>
