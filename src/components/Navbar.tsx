@@ -5,7 +5,10 @@ import CancelIcon from "../icons/CancelIcon";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   let pathname = window.location.pathname;
-  pathname = pathname === "/blank-canvas" ? "/" : pathname;
+  pathname =
+    pathname === "/blank-canvas" || pathname === "/upload-pdf"
+      ? "/"
+      : pathname;
 
   const getNavItemClass = (route: string) => {
     return pathname === route

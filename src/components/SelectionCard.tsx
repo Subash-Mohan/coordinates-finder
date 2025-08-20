@@ -17,7 +17,11 @@ const SelectionCard = () => {
           color="hsl(var(--yellow))"
           toLink="blank-canvas"
         />
-        <Card hoverText="Upload" color="hsl(var(--lightorange))" toLink="/">
+        <Card
+          hoverText="Upload"
+          color="hsl(var(--lightorange))"
+          toLink="upload-pdf"
+        >
           <UploadIcon />
         </Card>
         <div className="absolute top-[10%] -left-[6%] md:top-[78%] md:left-[68%] -z-10 lg:left-[59%] lg:top-[72%] ">

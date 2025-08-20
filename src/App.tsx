@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import BlankCanvasPage from "./pages/BlankCanvasPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PdfUploadPage from "./pages/PdfUploadPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/blank-canvas",
     element: <BlankCanvasPage />,
+  },
+  {
+    path: "/upload-pdf",
+    element: <PdfUploadPage />,
   },
 ]);
 function App() {
