@@ -2,6 +2,11 @@ import { useMemo, useState, useEffect } from "react";
 import AdvertisementCard from "../components/AdvertisementCard";
 import OutputCard from "../components/OutputCard";
 import MobileOutputCard from "../components/MobileOutputCard";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import workerUrl from "pdfjs-dist/build/pdf.worker.min.js?url";
 
 const PdfUploadPage = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -9,11 +14,20 @@ const PdfUploadPage = () => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [coordinatesBy1, setCoordinatesBy1] = useState({ x: 0, y: 0 });
   const [coordinatesBy10, setCoordinatesBy10] = useState({ x: 0, y: 0 });
+  const defaultLayoutPluginInstance = useMemo(
+    () => defaultLayoutPlugin(),
+    []
+  );
 
   const handleMouseMove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+    const target = event.target as HTMLElement;
+    const viewer = target.closest(".rpv-core__viewer") as HTMLElement | null;
+    if (!viewer) {
+      return;
+    }
+    const rect = viewer.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     const normalizedXBy1 = ((x / rect.width) * 1).toFixed(2);
@@ -68,12 +82,11 @@ const PdfUploadPage = () => {
         {fileUrl ? (
           <div
             className="relative h-[450px] md:h-[600px] max-w-screen-md aspect-[1/1.414] bg-white border-2 border-solid border-black shadow-[5px_5px_0px_0px_#000000] rounded-md overflow-hidden"
+            onMouseMove={handleMouseMove}
           >
-            <embed src={fileUrl} type="application/pdf" className="w-full h-full" />
-            <div
-              className="absolute top-0 left-0 w-full h-full"
-              onMouseMove={handleMouseMove}
-            />
+            <Worker workerUrl={workerUrl}>
+              <Viewer fileUrl={fileUrl} plugins={[defaultLayoutPluginInstance]} />
+            </Worker>
           </div>
         ) : (
           <div className="flex justify-center items-center h-[450px] md:h-[600px] max-w-screen-md aspect-[1/1.414] bg-white border-2 border-solid border-black shadow-[5px_5px_0px_0px_#000000] rounded-md">
