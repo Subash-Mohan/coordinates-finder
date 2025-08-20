@@ -67,7 +67,7 @@ const PdfUploadPage = () => {
         />
         {fileUrl ? (
           <div
-            className="relative h-[450px] md:h-[600px] max-w-screen-md aspect-[1/1.414] border-2 border-solid border-black"
+            className="relative h-[450px] md:h-[600px] max-w-screen-md aspect-[1/1.414] bg-white border-2 border-solid border-black shadow-[5px_5px_0px_0px_#000000] rounded-md overflow-hidden"
           >
             <embed src={fileUrl} type="application/pdf" className="w-full h-full" />
             <div
@@ -76,9 +76,11 @@ const PdfUploadPage = () => {
             />
           </div>
         ) : (
-          <p className="text-center text-black font-bold mt-2">
-            Upload a PDF to begin
-          </p>
+          <div className="flex justify-center items-center h-[450px] md:h-[600px] max-w-screen-md aspect-[1/1.414] bg-white border-2 border-solid border-black shadow-[5px_5px_0px_0px_#000000] rounded-md">
+            <p className="text-center text-black font-bold">
+              Upload a PDF to begin
+            </p>
+          </div>
         )}
       </div>
       <div className="w-[20%]  p-2 hidden md:block">{advertisementCard}</div>
